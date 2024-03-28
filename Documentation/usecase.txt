@@ -1,0 +1,16 @@
+Non functinal: 
+-Fall Detection Accuracy: The system should accurately detect falls with a very low false positive rate (minimizing alerts for non-fall events).
+-Data Security: The system should securely store and transmit data, ensuring privacy for the user.
+-Response Time: The system should send emergency notifications with minimal delay after a fall is detected.
+-Scalability: The system should be scalable to accommodate additional users and cameras without compromising performance.
+Ease of Use: The system should be easy to install, configure, and operate for users with varying technical skills.
+-Privacy: The system should have clear privacy settings allowing users to control data collection and storage.
+
+Fuctional:
+-Select Emergency Contact: This use case focuses on initiating emergency contact after a fall is detected. The system would automatically dial the local emergency number (based on the user's location) to connect with emergency services and dispatch help as quickly as possible.
+-Trigger a Fall Test: The purpose of this use case is to allow for testing the system's fall detection capabilities. The user would initiate a fall test through a designated method (e.g., button press, voice command) simulating a fall within the camera's view. The system's response would be to process the simulated fall and confirm if it can accurately detect the test scenario. This functionality helps ensure the system is working properly and provides peace of mind to the user.
+-Select a Response Time: This functionality allows the user to select the time before calling the emergency contact.
+-Select Ringtone: This functionality allows the user to change the alert ringtone.
+-Sends camera stream to the system.
+-Recieve notification about the fall.
+-Resident: Cancel calling the emergency number.
