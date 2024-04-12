@@ -47,5 +47,17 @@ def video():
     # Print the result
     print(result)
 
+# Ask user for input
 while True:
-   video()
+  choice = input("Enter 1 for webcam or 2 for video: ")
+  if choice in ('1', '2'):
+    break
+  else:
+    print("Enter a valid number")
+
+# Run the selected function
+if choice == '1':
+  while True:
+    webcam()
+else:
+  video()
