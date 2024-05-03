@@ -13,6 +13,13 @@ def getResult(frame):
   result = CLIENT.infer(frame, model_id="fall-detection-v5ye1/1")
   return result
 
+def detect_fall(results):
+  if "predictions" in results:
+    predictions_list = results["predictions"]
+    if len(predictions_list) > 0:
+        print("A fall has been detected")
+        #change this for the action you want to happen when a fall is detected
+
 def webcam():
 
   ret, frame = cap.read()
@@ -22,11 +29,8 @@ def webcam():
       print("Error: Failed to capture frame")
     
   frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
   result = getResult(frame_rgb)
-  
-  print(result)
-
+  detect_fall(result)
   cv2.imshow('Webcam Feed', frame)
 
 def video():
@@ -35,7 +39,6 @@ def video():
   while True:
     # Capture frame-by-frame
     ret, frame = cap.read()
-
     # If the frame is read correctly ret will be True
     if not ret:
       print("No more frames to process!")
@@ -44,8 +47,7 @@ def video():
     # Get inference result for the frame
     result = getResult(frame)
     cv2.imshow("current frame", frame)    
-    # Print the result
-    print(result)
+    detect_fall(result)
 
 # Ask user for input
 while True:
