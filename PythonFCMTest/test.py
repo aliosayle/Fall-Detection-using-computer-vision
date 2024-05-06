@@ -2,6 +2,7 @@ from inference_sdk import InferenceHTTPClient
 import cv2
 from SendPush import main
 import datetime
+import time 
 
 CLIENT = InferenceHTTPClient(
   api_url="https://detect.roboflow.com",
@@ -10,6 +11,7 @@ CLIENT = InferenceHTTPClient(
 now = datetime.datetime.now()
 count = 0
 last_minute = now.minute
+last_call_time = 0
 
 cap = cv2.VideoCapture(0)
 
@@ -17,6 +19,18 @@ cap = cv2.VideoCapture(0)
 def getResult(frame):
   result = CLIENT.infer(frame, model_id="fall-detection-v5ye1/1")
   return result
+
+
+#this function will only return false if called more than once in the cooldown (default is 60s)
+def send_notification_with_cooldown(cooldown_time = 60):
+  global last_call_time
+  current_time = time.time()
+  if current_time - last_call_time >= cooldown_time:
+    last_call_time = current_time
+    return True
+  else:
+    return False
+
 
 #this function returns True if it was called 5 times within a minute
 def call():
@@ -29,7 +43,11 @@ def call():
     count = 1
     last_minute = now.minute
     print("counter reset")
-  return count >= 5
+  #this checks if more than 5 instances of fall were detected, and if no notifications were send in the last cooldown period
+  if count >= 5 and send_notification_with_cooldown():
+    return True
+  else:
+    return False
 
 def detect_fall(results):
   if "predictions" in results:
