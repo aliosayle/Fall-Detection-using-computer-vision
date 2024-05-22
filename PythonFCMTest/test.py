@@ -6,7 +6,7 @@ import time
 
 CLIENT = InferenceHTTPClient(
   api_url="https://detect.roboflow.com",
-  api_key="TStIa7Kb0ued7inmpIw9"
+  api_key="wNZACmVXowWJhMTt4TWd"
 )
 now = datetime.datetime.now()
 count = 0
