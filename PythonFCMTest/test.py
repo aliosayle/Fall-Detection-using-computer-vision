@@ -1,8 +1,10 @@
+import sys
 from inference_sdk import InferenceHTTPClient
 import cv2
 from SendPush import main
 import datetime
 import time 
+from colorama import Fore, Style
 
 CLIENT = InferenceHTTPClient(
   api_url="https://detect.roboflow.com",
@@ -17,6 +19,10 @@ last_call_time = 0
 verbose = 1
 
 cap = cv2.VideoCapture(0)
+
+def loading_animation(add_dot=True, duration=5, interval=0.5):
+  if(verbose == 2 or verbose == 3):
+    print("frame analysed, no fall detected")
 
 #This function sends the frame to  Roboflow's API and returns a prediction
 def getResult(frame):
@@ -79,6 +85,7 @@ def video():
   while True:
     # Capture frame-by-frame
     ret, frame = cap.read()
+    loading_animation()
     # If the frame is read correctly ret will be True
     if not ret:
       print("No more frames to process!")
