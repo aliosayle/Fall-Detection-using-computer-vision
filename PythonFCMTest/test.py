@@ -8,8 +8,8 @@ from colorama import Fore, Style
 
 CLIENT = InferenceHTTPClient(
   api_url="https://detect.roboflow.com",
-  api_key=""
- <b> //Please replace your api key</b>
+  api_key="" //Please replace your api key
+
 )
 now = datetime.datetime.now()
 count = 0
