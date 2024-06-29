@@ -3,8 +3,8 @@
  Fall detection system using computer vision techniques and mobile application development.<br>
  We employed computer vision algorithms to detect falls from video streams.<br>
  Then implemented a mobile application to notify caregivers or emergency services in case of a fall<br>
- Also we connected the mobile app with the model when a fall is detected using Firebase Cloud Messaging
- <b>Please read our report submitted above ![](Documentation/Fall Detection System using Computer Vision.pdf)<b>
+ Also we connected the mobile app with the model when a fall is detected using Firebase Cloud Messaging <br><br>
+ <b>Please read our report submitted above in the Documentation:Fall Detection System using Computer Vision.pdf<b><br>
  ![](AppPic/Screenshot_20240517_204324.png)
  ![](AppPic/Screenshot_20240517_204448.png)
  ![](AppPic/Screenshot_20240517_204637.png) 
